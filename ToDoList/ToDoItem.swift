@@ -7,9 +7,11 @@
 
 import Foundation
 
-class ToDoItem{
+// make the objects identifiable so they can be iterated over ==> though in java you can just iterate over objects in an arraylist normally, but right now we're dealing with an interface!
+class ToDoItem : Identifiable{
     var title : String
     var isImportant : Bool
+    var taskId = UUID() // generates a random, unique identifier for each object ==> instance of this class ==> task
     
     
     init(){

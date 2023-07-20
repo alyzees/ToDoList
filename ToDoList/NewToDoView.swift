@@ -18,11 +18,26 @@ struct NewToDoView: View {
         
         VStack{
             Text("New Task").font(.system(size : 25.0, weight: .bold))
-            TextField("Enter your task here...", text  : $title).padding(15.0).background(Color(.systemGroupedBackground)).cornerRadius(10.0)// basically it's binding the value of what is entered into the text field to the global variable title
-            Toggle(isOn : $isImportant){
-                // isOn does not initialize the toggle to true/false, but it binds the value to the global variable isImportant
-                Text("Is this task important")
-            }.padding(20.0)
+            
+            TextField("Enter your task here...", text  : $title).padding(15.0).background(Color(.systemGroupedBackground)).cornerRadius(10.0)
+            // basically it's binding the value of what is entered into the text field to the global variable title
+            
+//                        Toggle(isOn : $isImportant){
+//                            // isOn does not initialize the toggle to true/false, but it binds the value to the global variable isImportant
+//                            Text("Is this task important?")
+//                        }.padding(20.0)
+            
+            
+            HStack (spacing: 10.0){
+                Text("Is this task important?")
+                Spacer()
+                Text("No")
+                Toggle(isOn : $isImportant){
+                    // isOn does not initialize the toggle to true/false, but it binds the value to the global variable isImportant
+                }.labelsHidden()
+                Text("Yes")
+            }.padding(.all, 15.0)
+            // end of HStack
             
             Button(action: {
                 
@@ -30,9 +45,12 @@ struct NewToDoView: View {
                 Text("Create task")
             }
             
-        }.padding(20.0)
+            
+        }.padding(20.0) // end of VStack
+            
+        }
     }
-}
+
 
 struct NewToDoView_Previews: PreviewProvider {
     static var previews: some View {
